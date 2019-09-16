@@ -32,3 +32,12 @@ def process_money(request):
             request.session['message'] = "<li>Entered a casino and earned {} golds ({})</li>".format(num, datetime.datetime.now().strftime('%Y/%m/%d %I:%M %p')) + request.session['message']
 
     return redirect("/")
+
+def reset(request):
+    try:
+        del request.session['gold']
+        del request.session['message']
+    except:
+        print("Clear")
+    finally:
+        return redirect("/")
